@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Exhaust.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player.png" type="Texture" id=3]
+[ext_resource path="res://Assets/playerShip2_blue.png" type="Texture" id=3]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -15,11 +15,18 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 5, -25.2, 5, -22.5, 28.3, 17, 27.2, 19, 25.9, 19, 17.9, 28, 14.1, 28, 7.1, 20, -6, 20, -16.8, 28.3, -19, 27.2, -19, 25.9, -28, 17.9, -28, 14.4, -3, -25.6, -3, -29.2 )
+polygon = PoolVector2Array( 8, -36.1, 18.2, -17.5, 19.4, -17.5, 56, -0.299999, 56, 12.7, 39.8, 37.5, 28.8, 37.5, 18.5, 34.9, 16.5, 37.5, -17, 37.5, -17, 36.8, -19.8, 35.3, -32.8, 37.5, -41, 37.5, -41, 36.1, -56, 14.9, -56, 0.5, -20, -16.8, -20, -17.6, -14, -21.6, -14, -23.9, -8, -36.9, -8, -37.5, 8, -37.5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( 0, -34, 32, 17, 16, 31, 5, 22, -5, 22, -17, 31, -33, 17 )
+polygon = PoolVector2Array( -10, -44, 8, -44, 21, -21, 60, -2, 61, 14, 44, 40, 19, 36, 15, 42, -14, 41, -19, 37, -39, 39, -63, 3, -17, -24 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1925
+limit_bottom = 930
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

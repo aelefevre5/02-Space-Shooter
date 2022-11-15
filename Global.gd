@@ -8,20 +8,35 @@ var lives = 5
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	randomize()
-	VP = get_viewport().size
+	#VP = get_viewport().size
+	VP = Vector2(1925,930)
 	var _signal = get_tree().get_root().connect("size_changed", self, "_resize")
 	reset()
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("menu"):
+		var Pause_Menu = get_node_or_null("/root/Game/UI/Pause_Menu")
+		if Pause_Menu == null:
+			get_tree().quit()
+		else:
+			if Pause_Menu.visible:
+				Pause_Menu.hide()
+				get_tree().paused = false
+			else:
+				Pause_Menu.show()
+				get_tree().paused = true
 	
 func reset():
 	score = 0
 	lives = 5
 
-func _unhandled_input(_event):
-	if Input.is_action_pressed("quit"):
-		get_tree().quit()
+#func _unhandled_input(_event):
+	#if Input.is_action_pressed("quit"):
+		#get_tree().quit()
 
 func _resize():
-	VP = get_viewport().size
+	#VP = get_viewport().size
+	pass
 
 
 func update_score(s):
